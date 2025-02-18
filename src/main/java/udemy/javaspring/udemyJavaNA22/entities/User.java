@@ -3,11 +3,21 @@ package udemy.javaspring.udemyJavaNA22.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_user")
 public class User implements Serializable {
-	
 	private static final long serialVersionUID = 1L;
 	
-	private Long ID;
+	@Id //indica ao JPA que o campo id será usado como PRIMARY KEY
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // indica ao JPA a maneira como o auto incremento da PK sera feito
+	private Long id;
+	
 	private String name;
 	private String email;
 	private String phone;
@@ -15,21 +25,21 @@ public class User implements Serializable {
 	
 	public User() {}
 	
-	public User(Long iD, String name, String email, String phone, String password) {
+	public User(Long id, String name, String email, String phone, String password) {
 		super();
-		ID = iD;
+		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.password = password;
 	}
 
-	public Long getID() {
-		return ID;
+	public Long getId() {
+		return id;
 	}
 
-	public void setID(Long iD) {
-		ID = iD;
+	public void setID(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -66,7 +76,7 @@ public class User implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(ID);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -78,6 +88,6 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(ID, other.ID);
+		return Objects.equals(id, other.id);
 	}
 }
