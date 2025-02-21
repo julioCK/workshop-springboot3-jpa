@@ -9,8 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "tb_user")
+@Entity 					//indica que essa classe sera gerenciada pelo JPA e mapeada para uma tabela no DB
+@Table(name = "tb_user") 	//define o nome que o JPA vai dar para a tabela criada no DB baseada nessa classe
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
