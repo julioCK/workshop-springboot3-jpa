@@ -4,8 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-
-
 										/*
 										 * 	Os Beans são classes java que são instanciadas, configuradas e gerenciadas pelo Container IoC do Spring.
 										 *	

@@ -1,27 +1,35 @@
 package udemy.javaspring.udemyJavaNA22.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-@Entity 					//indica que essa classe sera gerenciada pelo JPA e mapeada para uma tabela no DB
-@Table(name = "tb_user") 	//define o nome que o JPA vai dar para a tabela criada no DB baseada nessa classe
+@Entity 													/*	@Entity - 	indica que essa classe sera gerenciada pelo JPA e mapeada para uma tabela no DB */
+@Table(name = "tb_user") 									/*	@Table 	- 	define o nome que o JPA vai dar para a tabela criada no DB baseada nessa classe	*/
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	@Id //indica ao JPA que o campo id será usado como PRIMARY KEY
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // indica ao JPA a maneira como o auto incremento da PK sera feito
+	@Id														/* 	@Id - indica ao JPA que o campo id será usado como PRIMARY KEY */
+	@GeneratedValue(strategy = GenerationType.IDENTITY)  	/*	@GeneratedValue - indica ao JPA a maneira como o auto incremento da PK sera feito */
 	private Long id;
 	
 	private String name;
 	private String email;
 	private String phone;
 	private String password;
+	
+	@OneToMany(mappedBy = "client") 												/* Sinaliza ao Spring que a entidade User tem um relacionamento UM PARA MUITOS Order: User(1,N)Order */
+	private List<Order> orders = new ArrayList();									/* O parametro mappedBy = "client" indica que essa entidade esta mapeada como "client" na na outra entidade da relacao (Order) */
+				
+																					/* Ao instanciar a lista logo no campo, não haverá riscos de NullPointerException */
 	
 	public User() {}
 	

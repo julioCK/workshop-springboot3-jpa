@@ -18,15 +18,15 @@ import udemy.javaspring.udemyJavaNA22.services.UserService;
 													 * O resource UserResource vai possibilitar acesso as operações relacionadas a classe User. Em uma API REST um CONTROLLER tambem é um Resource
 													*/
 
-@RestController // 									@RestController - Sinaliza ao spring que essa classe é um controller. Uma classe controller é responsavel por receber, processar e responder requisiçoes HTTP
-@RequestMapping("/usuarios") //						@RequestMapping - Sinaliza ao spring que essa classe controller responde baseada na URL "/usuario"
+@RestController										// @RestController - Sinaliza ao spring que essa classe é um controller. Uma classe controller é responsavel por receber, processar e responder requisiçoes HTTP
+@RequestMapping("/usuarios")						// @RequestMapping - Sinaliza ao spring que essa classe controller responde baseada na URL "/usuario"
 public class UserResource {
 	
 	@Autowired
 	private UserService userService;
 	
 	
-	@GetMapping //									Mapeia o metodo findAll como um endpoint GET. Um endpoint está associado a um metodo e a uma operaçao (nesse caso o GET).
+	@GetMapping										// Mapeia o metodo findAll como um endpoint GET. Um endpoint está associado a um metodo e a uma operaçao (nesse caso o GET).
 	public ResponseEntity<List<User>> findAll() {
 		
 		List<User> list = userService.findAll();	
@@ -42,10 +42,11 @@ public class UserResource {
 }
 
 																	/*
-																	* A classe ResponseEntity representa uma resposta HTTP completa de um endpoint REST com os dados no formato JSON.
-																	*  
-																	* ResponseEntity.ok() - retorna uma resposta 200 OK 
-																	* ResponseEntity.body(u) - retorna uma resposta com corpo contendo o parametro fornecido */
+																	 * A classe ResponseEntity representa uma resposta HTTP completa de um endpoint REST com os dados no formato JSON.
+																	 *  
+																	 * ResponseEntity.ok() - retorna uma resposta 200 OK 
+																	 * ResponseEntity.body(u) - retorna uma resposta com corpo contendo o parametro fornecido 
+																	*/
 
 
 
